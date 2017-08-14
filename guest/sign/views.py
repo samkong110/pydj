@@ -27,8 +27,9 @@ def login_action(request):
 # 发布会管理
 @login_required
 def event_manage(request):
+    event_list = Event.objects.all()
     username = request.session.get('user', '') # 读取浏览器 cookie
-    return render(request,"event_manage.html",{"user":username})
+    return render(request,"event_manage.html",{"user":username,"events":event_list})
 
 
 
