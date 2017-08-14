@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	'sign', #添加sign应用
-    'bootstarp3'
+    'bootstrap3'
 ]
 
 MIDDLEWARE = [
