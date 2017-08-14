@@ -24,6 +24,31 @@
 </div>
 </div>
 </nav>
+<!-- 嘉宾列表 -->
+<div class="row" style="padding-top: 80px;">
+<div class="col-md-6">
+<table class="table table-striped">
+<thead>
+<tr>
+<th>id</th><th>名称</th><th>手机</th><th>Email</th><th>签到</th>
+<th>发布会</th>
+</tr>
+</thead>
+<tbody>
+{% for guest in guests %}
+<tr>
+<td>{{ guest.id }}</td>
+<td>{{ guest.realname }}</td>
+<td>{{ guest.phone }}</td>
+<td>{{ guest.email }}</td>
+<td>{{ guest.sign }}</td>
+<td>{{ guest.event }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
 <!-- 发布会列表 -->
 <div class="row" style="padding-top: 80px;">
 <div class="col-md-6">
