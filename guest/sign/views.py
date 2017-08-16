@@ -65,7 +65,8 @@ def guest_manage(request):
 @login_required
 def sign_index(request, event_id):
     event = get_object_or_404(Event, id=event_id)
-    guest_list = Guest.objects.all()
+    a = Event.objects.filter(id = event_id)
+    guest_list = Guest.objects.filter(event_id = a)
     p = Paginator(guest_list, 2)
     tt = p.count
     t = 0
@@ -80,7 +81,8 @@ def sign_index(request, event_id):
 def sign_index_action(request,event_id):
     event = get_object_or_404(Event, id=event_id)
     phone = request.POST.get('phone','')
-    guest_list = Guest.objects.all()
+    a = Event.objects.filter(id=event_id)
+    guest_list = Guest.objects.filter(event_id=a)
     p = Paginator(guest_list, 2)
     tt = p.count
     t = 0
