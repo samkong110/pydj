@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from sign.models import Event, Guest
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+
 # Create your views here.
 def index(request):
     return render(request, "index.html")
