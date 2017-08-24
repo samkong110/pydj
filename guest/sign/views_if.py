@@ -16,15 +16,15 @@ def add_event(request):
     start_time = request.POST.get('start_time', '')   # 发布会时间
 
     if eid == '' or name == '' or limit == '' or address == '' or start_time == '':
-        return JsonResponse({'status': 10021, 'message': 'parameter error '})
+        return JsonResponse({'status': 10021, 'message': 'parameter error'})
 
     result = Event.objects.filter(id = eid)
     if result:
-        return JsonResponse({'status': 10022, 'message': 'event id already exists '})
+        return JsonResponse({'status': 10022, 'message': 'event id already exists'})
 
     result = Event.objects.filter(name = name)
     if result:
-        return JsonResponse({'status': 10023, 'message': 'event name already exists '})
+        return JsonResponse({'status': 10023, 'message': 'event name already exists'})
 
     if status == '':
         status = 1
@@ -34,7 +34,7 @@ def add_event(request):
     except ValidationError as e:
         error = 'start_time format error. It must be in YYYY-MM-DD HH:MM:SS format.'
         return JsonResponse({'status': 10024, 'message': error})
-    return JsonResponse({'status': 200, 'message ': 'add event success '})
+    return JsonResponse({'status': 200, 'message ': 'add event success'})
 
 
 # 发布会查询
@@ -43,7 +43,7 @@ def get_event_list(request):
     name = request.GET.get("name", "")  # 发布会名称
 
     if eid == '' and name == '':
-        return JsonResponse({'status': 10021, 'message': 'parameter error '})
+        return JsonResponse({'status': 10021, 'message': 'parameter error'})
 
     if eid != '':
         event = {}
@@ -51,7 +51,7 @@ def get_event_list(request):
             result = Event.objects.get(id=eid)
 
         except ObjectDoesNotExist:
-            return JsonResponse({'status': 10022, 'message': 'query result is empty '})
+            return JsonResponse({'status': 10022, 'message': 'query result is empty'})
 
         else:
             event['name'] = result.name
