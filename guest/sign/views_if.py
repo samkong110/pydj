@@ -34,7 +34,7 @@ def add_event(request):
     except ValidationError as e:
         error = 'start_time format error. It must be in YYYY-MM-DD HH:MM:SS format.'
         return JsonResponse({'status': 10024, 'message': error})
-    return JsonResponse({'status': 200, 'message ': 'add event success'})
+    return JsonResponse({'status': 200, 'message': 'add event success'})
 
 
 # 发布会查询
@@ -49,7 +49,6 @@ def get_event_list(request):
         event = {}
         try:
             result = Event.objects.get(id=eid)
-
         except ObjectDoesNotExist:
             return JsonResponse({'status': 10022, 'message': 'query result is empty'})
 
@@ -64,16 +63,15 @@ def get_event_list(request):
     if name != '':
         datas = []
         results = Event.objects.filter(name__contains=name)
-
-    if results:
-        for r in results:
-            event = {}
-            event['name'] = r.name
-            event['limit'] = r.limit
-            event['status'] = r.status
-            event['address'] = r.address
-            event['start_time'] = r.start_time
-            datas.append(event)
+        if results:
+            for r in results:
+                event = {}
+                event['name'] = r.name
+                event['limit'] = r.limit
+                event['status'] = r.status
+                event['address'] = r.address
+                event['start_time'] = r.start_time
+                datas.append(event)
             return JsonResponse({'status': 200, 'message': 'success', 'data': datas})
         else:
             return JsonResponse({'status': 10022, 'message': 'query result is empty'})
